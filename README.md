@@ -27,7 +27,7 @@ LINQ
 ## How to Use
 
 1. Add a "staff.txt" file in the project folder:
-2. Include data such as:
+2. Save data such as:
 Junior, Manager
 Alice, Admin
 3. Run the app and input hours worked
