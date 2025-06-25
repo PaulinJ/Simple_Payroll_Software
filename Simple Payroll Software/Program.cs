@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -95,22 +96,55 @@ namespace Simple_Payroll_Software
         private const float overtimeRate = 15.5F;
         private const float adminHourlyRate = 30;
 
+        public float Overtime { get; private set; }
+
+        public Admin(string name) : base(name, adminHourlyRate)
+        {
+            
+        }
 
         public override void CalculatePay()
         {
-
+            base .CalculatePay();
+            if (HoursWorked > 160)
+            {
+                Overtime = overtimeRate * (HoursWorked - 160);
+                TotalPay += Overtime;
+            }
+        }
+        public override string ToString()
+        {
+            return $"Name: {NameOfStaff} Hours Worked: {HoursWorked} Pay: {TotalPay}";
         }
 
     }
 
     class FileReader
     {
+        public List<Staff> ReadFile()
+        {
+            string fileName = "staff.txt";
+           
+            List<Staff> myStaff = new List<Staff>();
+            string[] result = new string[2];
+            string[] separator = {", "};
+            
 
+            if (File.Exists(fileName))
+            {
+                FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.ReadWrite);
+                StreamReader inFile = new StreamReader(fileStream);
+
+                
+            }
+
+        }
 
     }
 
     class PaySlip
     {
+
         
 
     }
